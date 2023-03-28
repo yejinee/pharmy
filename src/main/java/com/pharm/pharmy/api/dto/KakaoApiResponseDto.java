@@ -18,9 +18,4 @@ public class KakaoApiResponseDto {
     @JsonProperty("documents")
     private List<DocumentDto> documentDtoList;
 
-
-
-
-
-
 }

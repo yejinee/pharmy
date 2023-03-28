@@ -20,6 +20,7 @@ public class KakaoUriBuilderService {
         log.info("[KakaoUriBuilderService - buildUriByAddressSearch] address: {}, uri: {}", address, uri);
 
         return uri;
+
     }
 
 
