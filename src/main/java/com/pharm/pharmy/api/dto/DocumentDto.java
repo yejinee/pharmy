@@ -15,5 +15,5 @@ public class DocumentDto {
     @JsonProperty("x")
     private double latitude;
     @JsonProperty("y")
-    private double longtitude;
+    private double longitude;
 }
