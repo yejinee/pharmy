@@ -15,6 +15,7 @@ import javax.persistence.Id;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Pharmacy{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
