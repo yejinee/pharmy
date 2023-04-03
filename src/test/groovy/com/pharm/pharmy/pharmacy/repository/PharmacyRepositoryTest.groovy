@@ -3,13 +3,8 @@ package com.pharm.pharmy.pharmacy.repository
 import com.pharm.pharmy.AbstractIntegrationContainerBaseTest
 import com.pharm.pharmy.pharmacy.entity.Pharmacy
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
-import spock.lang.Specification
-import java.util.Arrays
-
 
 class PharmacyRepositoryTest extends AbstractIntegrationContainerBaseTest {
-
     @Autowired
     private PharmacyRepository pharmacyRepository
 
@@ -17,25 +12,28 @@ class PharmacyRepositoryTest extends AbstractIntegrationContainerBaseTest {
         pharmacyRepository.deleteAll()
     }
 
-
-    def "PharmacyRepository save"() {
+    def "PharmacyRepository save function"() {
         given:
         String address = "서울 특별시 성북구 종암동"
         String name = "은혜 약국"
         double latitude = 36.11
-        double longtitude = 128.11
+        double longitude = 128.11
 
-        def pharmacy =Pharmacy.builder().pharmacyAddress(address).pharmacyName(name).latitude(latitude).longtitude(longtitude).build()
+        def pharmacy = Pharmacy.builder()
+                .pharmacyAddress(address)
+                .pharmacyName(name)
+                .latitude(latitude)
+                .longitude(longitude)
+                .build()
 
         when:
-        def result = pharmacyRepository.save(pharmacy)
+        def entity = pharmacyRepository.save(pharmacy)
 
         then:
-        result.getPharmacyAddress() == address
-        result.getPharmacyName() == name
-        result.getLatitude() == latitude
-        result.getLongtitude() == longtitude
-
+        entity.getPharmacyAddress() == address
+        entity.getPharmacyName() == name
+        entity.getLatitude() == latitude
+        entity.getLongitude() == longitude
     }
     // api test
     def "PharmacyRepository saveAll"(){
@@ -43,9 +41,14 @@ class PharmacyRepositoryTest extends AbstractIntegrationContainerBaseTest {
         String address = "서울 특별시 성북구 종암동"
         String name = "은혜 약국"
         double latitude = 36.11
-        double longtitude = 128.11
+        double longitude = 128.11
 
-        def pharmacy =Pharmacy.builder().pharmacyAddress(address).pharmacyName(name).latitude(latitude).longtitude(longtitude).build()
+        def pharmacy = Pharmacy.builder()
+                .pharmacyAddress(address)
+                .pharmacyName(name)
+                .latitude(latitude)
+                .longitude(longitude)
+                .build()
 
         when:
         pharmacyRepository.saveAll(Arrays.asList(pharmacy))
@@ -53,7 +56,5 @@ class PharmacyRepositoryTest extends AbstractIntegrationContainerBaseTest {
 
         then:
         result.size()==1
-
     }
-
 }
